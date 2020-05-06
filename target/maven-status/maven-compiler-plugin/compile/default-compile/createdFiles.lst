@@ -1,5 +1,0 @@
-com/devisv/core/exception/HttpException.class
-com/devisv/core/exception/NotFoundException.class
-com/devisv/core/service/SimpleCrudService.class
-com/devisv/core/controller/SimpleCrudController.class
-com/devisv/core/model/Model.class
