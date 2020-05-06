@@ -3,6 +3,7 @@ package com.devisv.core.service;
 import com.devisv.core.exception.NotFoundException;
 import com.devisv.core.model.Model;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import org.springframework.data.repository.CrudRepository;
@@ -18,7 +19,7 @@ public abstract class SimpleCrudService <ENTITY extends Model, ID> {
 
   @Transactional(readOnly = true)
   public ENTITY getById(ID id) {
-    return repository.findById(id).orElseThrow(() -> getNotFountException());
+    return repository.findById(id).orElseThrow(() -> getNotFountException(Map.of("id", id)));
   }
 
   @Transactional(readOnly = true)
@@ -49,5 +50,5 @@ public abstract class SimpleCrudService <ENTITY extends Model, ID> {
 
   public abstract ENTITY createEntity();
 
-  protected abstract NotFoundException getNotFountException();
+  protected abstract NotFoundException getNotFountException(Map<String, Object> params);
 }
